@@ -1,0 +1,30 @@
+Aim: Perform Remote login using Telnet Server.
+
+Hardware/Software required: Telnet Server
+
+Step 1: Open Terminal
+Press: Ctrl + Alt + T
+
+Step 2: Install Telnet Server
+Type the following command and press Enter: 
+sudo apt-get install telnetd
+
+Step 3: Enter Password and Confirm Installation
+You will be asked: “Do you want to continue? [Y/n]” Type 'y' and press Enter. Wait for installation to complete.
+
+Step 4: Restart the inetd Service
+Type this command and press Enter: 
+sudo /etc/init.d/openbsd-inetd restart
+
+Step 5: Check if Telnet Server is Running
+Type: 
+sudo netstat -tnlp | grep telnet
+
+Step 6: Test Telnet Connection (Localhost)
+On the same machine, type:
+telnet 127.0.0.1
+
+Step 7: Login to the Shell via Telnet
+You will be asked to login: 
+- Enter your Ubuntu username 
+- Enter your password
