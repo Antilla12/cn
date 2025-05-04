@@ -1,0 +1,13 @@
+Aim: Use basic networking commands in Linux (ping, tracert, nslookup, netstat, ip, ifconfig, dig, route)
+
+Hardware/Software required: Command Prompt OR Terminal
+
+1. ifconfig
+2. ping
+3. tracepath <server name> --- tracepath google.com
+4. traceroute <server name> --- traceroute google.com
+5. host <server name> --- host google.com
+6. nslookup <server name> --- nslookup google.com
+7. netstat OR netstat -an
+8. ip
+9. dig <server name> --- dig google.com
