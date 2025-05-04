@@ -1,0 +1,55 @@
+Aim: Write a Programme to implement Socket Programming using TCP or UDP.
+
+Hardware/Software required: JDK 1.8, Python 3.6
+
+MyServer.java file
+import java.io.*;
+import java.net.*;
+
+public class MyServer {
+    public static void main(String[] args) {
+        try {
+            ServerSocket ss = new ServerSocket(6666);
+            System.out.println("Server is waiting for a client...");
+
+            Socket s = ss.accept(); // establishes connection
+            DataInputStream dis = new DataInputStream(s.getInputStream());
+
+            String str = dis.readUTF();
+            System.out.println("Message = " + str);
+
+            dis.close();
+            s.close();
+            ss.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+
+MyClient.java file
+import java.io.*;
+import java.net.*;
+
+public class MyClient {
+    public static void main(String[] args) {
+        try {
+            Socket s = new Socket("localhost", 6666);
+            DataOutputStream dout = new DataOutputStream(s.getOutputStream());
+
+            dout.writeUTF("Hello Server");
+            dout.flush();
+
+            dout.close();
+            s.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+----------------------------------------
+1. Open terminal/ command prompt
+2. Run the server
+  java MyServer
+3. In new terminal run the client
+  java MyClient
