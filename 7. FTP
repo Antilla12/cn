@@ -1,0 +1,67 @@
+Aim: Perform file transfer and access file using FTP.
+
+Hardware/Software required: FTP Server, internet
+
+
+Part 1: Setup FTP Server (ProFTPD)
+
+Step 1: Install ProFTPD Server
+ Open terminal on the server system and run: 
+sudo apt update 
+sudo apt install -y proftpd 
+
+Step 2: Configure ProFTPD
+ Edit the config file: 
+sudo nano /etc/proftpd/proftpd.conf  
+Ensure the following lines are set: 
+UseIPv6 off 
+ServerName "ftpserver.local" 
+DefaultRoot ~ 
+
+Step 3: (Optional) Restrict Users
+ Edit FTP users file: 
+sudo nano /etc/ftpusers  
+Add usernames to block FTP access (e.g., test) 
+
+Step 4: Restart ProFTPD
+sudo systemctl restart proftpd
+
+Part 2: Setup FTP Client
+Step 5: Install lftp on the client machine
+sudo apt install -y lftp
+
+Part 3: Connect & Transfer Files Using FTP
+Step 6: Connect to FTP Server
+Example: lftp -u ubuntu 192.168.1.10
+
+Step 7: FTP Commands
+
+------------------------------------------------
+Example Scenario
+Assume:
+- Username: ubuntu
+- Server IP: 192.168.1.10
+ 
+Upload a file: 
+lftp -u ubuntu 192.168.1.10 
+> put notes.txt  
+
+Download a file: 
+> get report.pdf  
+
+Create a directory: 
+> mkdir assignments  
+
+Delete multiple files: 
+> mrm file1.txt file2.txt 
+
+Bonus Tip: Create Test Files
+ echo "hello world" > test1.txt 
+echo "another file" > test2.txt  
+
+Upload them using: 
+lftp -u ubuntu 192.168.1.10 
+> mput test1.txt test2.txt 
+
+Final Note
+ - Ensure both machines are on the same network. - You can test on 2 Ubuntu VMs or 1 host and 1 VM using Bridged or Host-Only networking. 
