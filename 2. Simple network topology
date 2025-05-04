@@ -1,0 +1,41 @@
+Aim: Build a simple network topology and configure it for static routing protocol using packet tracer.
+
+Hardware/Software required: Cisco Packet Tracer
+
+1. Drag and drop the router/switch/hub from the bottom of the screen
+
+2. Select end devices from the bottom left-hand corner and drag it to the sandbox screen. Do this twice to make two computers appear below the router.
+
+3. select connections from the same bottom left-hand corner. When you connect like- devices(Such as a router and computer) you use a crossover cable, so you should select copper cross-over cable from the second menu to the immediate right. Click on Router0, and connect the cable via FastEthernet0/0 as seen below:
+
+4. click the PC0 and select FastEthernet. You will notice that lthough a link is established, it is not functional. You can tell by the red dots that are present on both ends of the connection. Once the router is configured correctly, the red dots will turn green to indicate the devices are able to communicate. Do the same operation to PC1, only this time connect the cable to FastEthernet0/1 since FastEthernet0/0 is already taken by PC0. Your network should be similar to the one below at this point:
+
+5. Click on your router to bring up the configuration menu and verify that it is turned on.When on, there will be a small green light below the switch as seen in the diagram.
+
+6. Next we have to open the Ethernet ports to allow communication. Although they are physically connected, they are in a state that is known as being in administrative shut down. Now click on the CLI tab to access the configuration menu.
+1. Press RETURN to start the session
+2. Type enable to get to privileged mode (this gives you more options in configuring the router)
+3. Type config terminal (or config t for short) to access the configuration menu.
+4. Type interface fastethernet0/0 to access Ethernet0/0
+5. Type ip address 192.168.10.1 255.255.255.0 to assign an IP address and subnet mask to the
+interface.
+6. Type no shutdown to open the interface up for business.
+7. That’s it! You should now see a message similar to the following:
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+Now we have to do the same thing for fastethernet0/1. If you don’t, there still won’t be a connection to PC1! Make sure to enter the IP address carefully as seen below:
+1. Press Ctrl + Z to go back to the previous mode.
+2. Type config t
+3. Type interface fastethernet0/1
+4. Type ip address 192.168.20.1 255.255.255.0
+5. Type no shutdown
+At this point our router is configured properly. If you test out a ping, you will notice that the computers still don’t communicate, however!
+
+Our last step is to configure the gateway on each desktop computer. The gateway is the address we assigned to the Ethernet port that the desktop is connected to. It will allow the computer to interface with another network, so our ping won’t work without it!
+1. Click on PC0 to bring up the configuration menu. Under global settings you will find a field for the gateway. Enter the corresponding IP address of the router’s interface, which is 192.168.10.1. Then click the FastEthernet tab on the left column to set the actual computer’s IP address to be on the network. Use 192.168.10.2 for the IP address, and 255.255.255.0 for the subnet mask.
+
+2. Do the same thing for PC1, only use 192.168.20.1 for the gateway address, 192.168.20.2 for the IP address, and 255.255.255.0 for the subnet mask. You can confirm that your network works by sending out a packet of information from PC0 to PC1, and vice versa.
+Click the packet icon on the right menu as seen below:
+Click on PC0 and then click PC1. On the lower right of the screen you will see a message box that says “Successful.” If it doesn’t, you may have had a syntax error when putting in an IP address or router configuration command. Review your work or ask for help among the community if you are stuck.
+
