@@ -1,0 +1,20 @@
+Aim: Use Wireshark to understand the operation of TCP/IP layers :
+⚫ Ethernet Layer : Frame header, Frame size etc.
+⚫ Data Link Layer : MAC address, ARP (IP and MAC address binding)
+⚫ Network Layer : IP Packet (header, fragmentation), ICMP (Query and Echo)
+⚫ Transport Layer: TCP Ports, TCP handshake segments etc.
+⚫ Application Layer: DHCP, FTP, HTTP header formats
+
+Hardware/Software required: Wireshark
+
+Wireshark Installation steps:
+1. Enter admin mode by following command. If not entered in admin mode then packets will not get captured in wireshark.
+sudo su
+
+2. Command to install wireshark on ubuntu
+sudo apt-get install wireshark
+
+3. Double click on the wireshark icon. We get an open window as given below.
+
+TCP Three-way Handshake
+The delta value between frames 1 and 2 can be used as a TCP transport connect baseline value. Other important information gathered from this handshake: • Window Size • SACK • Maximum Segment Size • Window Scale Option value
